@@ -1,4 +1,4 @@
-const parseEnv = () => {
+const parseArgs = () => {
   const args = process.argv.slice(2);
   const result = args.reduce((acc, curr, index, array) => {
     if (index % 2 === 0) {
@@ -13,4 +13,4 @@ const parseEnv = () => {
   console.log(output);
 };
 
-parseEnv();
+parseArgs();
