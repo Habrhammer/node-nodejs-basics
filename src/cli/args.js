@@ -1,16 +1,12 @@
 const parseArgs = () => {
   const args = process.argv.slice(2);
-  const result = args.reduce((acc, curr, index, array) => {
-    if (index % 2 === 0) {
-      let key = curr.startsWith("--") ? curr.slice(2) : curr;
-      const value = array[index + 1] || "";
-      acc.push(`RSS_${key}=${value}`);
-    }
-    return acc;
-  }, []);
-
-  const output = result.join("; ");
-  console.log(output);
+  const result = [];
+  for (let i = 0; i < args.length; i += 2) {
+    const key = args[i].replace('--', '');
+    const value = args[i + 1];
+    result.push(`${key} is ${value}`);
+  }
+  console.log(result.join(', '));
 };
 
 parseArgs();
