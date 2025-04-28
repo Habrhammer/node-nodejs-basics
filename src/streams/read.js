@@ -11,6 +11,10 @@ const read = async () => {
 
   readStream.pipe(process.stdout);
 
+  readStream.on("end", () => {
+    console.log("\n");
+  });
+
   readStream.on("error", (err) => {
     console.error(err.message);
   });
